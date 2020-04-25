@@ -1,0 +1,27 @@
+{
+  "name": "jb-puppeteer-server",
+  "version": "1.0.0",
+  "description": "\u0016puppeteer server for jBart",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtwareSoft/jb-puppeteer-server.git"
+  },
+  "keywords": [
+    "jbart",
+    "\u0016\u0016puppeteer"
+  ],
+  "author": "Shai Ben-Yehuda <shaiby@artwaresoft.com> (http://artwaresoft.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArtwareSoft/jb-puppeteer-server/issues"
+  },
+  "homepage": "https://github.com/ArtwareSoft/jb-puppeteer-server#readme",
+  "dependencies": {
+    "puppeteer": "^3.0.1"
+  }
+}
