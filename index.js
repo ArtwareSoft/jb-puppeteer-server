@@ -8,15 +8,15 @@ wss.on('connection', ws => {
   ws.send(JSON.stringify({res: typeof jb == 'undefined' ? 'loadCodeReq' : 'ready'}))
   ws.on('message', _message => {
     try {
-        const message = JSON.parse(_message)
+        const message = _message.match(/^{\s*run:/) ? eval('('+_message+')') : JSON.parse(_message)
         if (message.loadCode) {
             vm.runInThisContext(message.loadCode, message.moduleFileName)
             global.jb = jb
         }
-        if (message.require) {
+        else if (message.require) {
             jb.path(global, message.writeTo, require(message.require))
         }
-        if (message.run && typeof jb != 'undefined') { 
+        else if (message.run && typeof jb != 'undefined') { 
             new jb.jbCtx().setVar('clientSocket',ws).run(message.run)
         }
       } catch(error) {
