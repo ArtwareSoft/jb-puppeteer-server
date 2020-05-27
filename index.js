@@ -1,8 +1,14 @@
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 8090 });
 const vm = require('vm')
-global.puppeteer = require('puppeteer')
+//global.puppeteer = require('puppeteer')
 global.hasPptrServer = true
+global.puppeteer = require('puppeteer-extra')
+ 
+// Add adblocker plugin, which will transparently block ads in all pages you
+// create using puppeteer.
+const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker')
+puppeteer.use(AdblockerPlugin())
 
 wss.on('connection', ws => {
   ws.send(JSON.stringify({res: typeof jb == 'undefined' ? 'loadCodeReq' : 'ready'}))
